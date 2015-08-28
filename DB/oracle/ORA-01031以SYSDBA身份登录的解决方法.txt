@@ -1,0 +1,12 @@
+ORA-01031: insufficient privileges
+无法以SYSDBA身份登录的解决方法：
+select * from v$pwfile_users;
+
+alter user system identified by oracle;
+
+grant sysdba to system;
+
+grant sysoper to system;
+
+修改system登录的密码
+alter user system identified by system;

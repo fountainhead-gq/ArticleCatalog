@@ -1,0 +1,24 @@
+ORA-03113数据库无法正常启动：
+
+1.连接数据库，启动数据库到mount状态
+connect / as sysdba
+sql>startup mount
+
+2.查看日志组状态
+SQL> select * from v$log;
+
+3.尝试归档日志
+SQL> alter database open resetlogs 1;
+
+4.使用不完全恢复数据库
+SQL> alter database open resetlogs;
+
+5.尝试失败之后，恢复数据库到指定时间点,
+SQL> recover database until time '2015-07-20'
+SQL> alter database open resetlogs;
+
+6.关闭数据库
+SQL> shutdown immediate
+
+7.再次启动数据库，发现已经可以正常启动。
+SQL> startup

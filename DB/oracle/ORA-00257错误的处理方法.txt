@@ -1,0 +1,47 @@
+ORA-00257 archiver error 错误的处理方法
+
+1.登录
+C:> sqlplus /nolog
+SQL> connect /as sysdba
+
+2.看看archiv log所在位置
+SQL> show parameter log_archive_dest;
+
+3.检查一下归档目录和log sequence
+SQL> archive log list;
+
+4.查看日志的使用情况，archivelog的使用率是否很大
+SQL> select * from V$FLASH_RECOVERY_AREA_USAGE;
+
+5.计算已经占用的空间
+SQL> select sum(percent_space_used)*3/100 from v$flash_recovery_area_usage;
+
+可以考虑修改FLASH_RECOVERY_AREA的空间为10GB，修改前确认磁盘有足够空间
+SQL> ALTER SYSTEM SET DB_RECOVERY_FILE_DEST_SIZE=10g SCOPE = BOTH;
+
+6. 查找recovery目录
+SQL> show parameter recover;
+
+根据db_recovery_file_dest，进入到D:\app\Administrator\flash_recovery_area\HTHRDB\ARCHIVELOG，清除过期的归档日志（建议备份或转移），不能全部删除，保留近期的日志。
+
+注意:
+在删除归档日志后，必须用RMAN维护控制文件，否则空间显示仍然不释放。
+
+7.新开shell,进入RMAN
+C:> rman target /
+
+8.检查一些无用的archivelog
+RMAN> crosscheck archivelog all;
+
+9.删除过期的归档日志或删除截止到前七天的所有archivelog
+RMAN> delete expired archivelog all;
+或者
+RMAN> delete archivelog until time 'sysdate-7';
+
+10.再次查看日志的使用情况
+SQL> select * from V$FLASH_RECOVERY_AREA_USAGE;
+
+
+11.重启数据库
+SQL>shutdown immediate
+SQL>startup

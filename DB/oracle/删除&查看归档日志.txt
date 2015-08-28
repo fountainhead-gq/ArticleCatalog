@@ -1,0 +1,65 @@
+oralce查看&删除日志
+
+查询每天的日志归档产生的情况：
+SELECT TRUNC(FIRST_TIME) "TIME",SUM(BLOCK_SIZE * BLOCKS) / 1024 / 1024 / 1024 "SIZE(GB)" FROM V$ARCHIVED_LOG GROUP BY TRUNC(FIRST_TIME);
+
+查看归档日志的目录
+SQL> show parameter db_recover；
+或
+SQL> show parameter recover;
+或
+SQL> show parameter db_recovery_file_dest_size; 
+ 
+查看归档日志的使用率
+SQL>select * from V$FLASH_RECOVERY_AREA_USAGE;
+
+如果显示为ENABLE则表示已成功归档
+SQL> archive log list; 
+
+
+
+使用RMAN删除archivelog,删除后必须重启数据库
+
+方法一：
+进入rman
+C:>rman target /
+
+检查控制文件和实际物理文件的差别
+RMAN> crosscheck archivelog all;
+
+同步控制文件的信息和实际物理文件的信息
+RMAN> delete expried archivelog all;
+
+如果单独执行 crosscheck 而不执行 delete 那么操作还是失败的，因为并未达到同步控制文件和实际物理文件的目的。
+
+方法二：
+进入rman后
+
+RMAN>DELETE ARCHIVELOG ALL COMPLETED BEFORE 'SYSDATE-7';
+表示删除7天以前的所有archivelog，但是这个命令的缺点是无法对archivelog进行细致的划分。
+
+RMAN> list expired archivelog all;
+用list expired看看是否有失效的archive log
+
+删除过期备份
+RMAN> report obsolete;
+RMAN> delete obsolete;
+
+重启数据库
+SQL>shutdown immediate
+SQL>startup
+
+
+
+
+使用toad工具查看日志信息：
+在database 找到logminer 然后把要分析的日志放进去，里面有详细的数据库执行记录，很直观的看到产生归档的语句。
+
+查看alert_oracle.log
+
+遇到的问题：
+1.ORA-00257归档失败，估计是满了。
+
+2.ORA-24324当时开着两个sqlplus，一个在使用，一个执行了关闭命令，估计是死锁。
+
+3.ORA-00312,ORA-00313 日志组文件丢失，select group#,sequence#,archived,status from v$log;查看日志组的状态。
