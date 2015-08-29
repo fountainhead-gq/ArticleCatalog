@@ -16,8 +16,8 @@ t.prt()
 ```
 执行结果如下
 ```
-<__main__.Test object at 0x000000000284E080>
-<class '__main__.Test'>
+<test.Test object at 0x00000000030C0E10>
+<class 'test.Test'>
 ```
 从上面的例子中可以很明显的看出，self代表的是类的实例。而self.class则指向类。
 
@@ -82,7 +82,7 @@ Test.prt()
 ```
 运行结果如下
 ```
-<class '__main__.Test'>
+<class 'test.Test'>
 ```
 在继承时，传入的是哪个实例，就是那个传入的实例，而不是指定义了self的类的实例。
 
@@ -105,9 +105,9 @@ p.pprt()
 
 运行结果如下
 ```
-<__main__.Child object at 0x0000000002A47080>
-<__main__.Child object at 0x0000000002A47080>
-<__main__.Parent object at 0x0000000002A47240>
+<test.Child object at 0x00000000030A69E8>
+<test.Child object at 0x00000000030A69E8>
+<test.Parent object at 0x00000000030A6AC8>
 
 ```
 解释：
@@ -136,9 +136,9 @@ t.x
 ```
 运行结果如下：
 ```
-self in Test: <__main__.Test object at 0x0000000002A570B8>
-self in Desc: <__main__.Desc object at 0x000000000283E208>
-<__main__.Desc object at 0x000000000283E208> <__main__.Test object at 0x0000000002A570B8> <class '__main__.Test'>
+self in Test: <test.Test object at 0x00000000044B1470>
+self in Desc: <test.Desc object at 0x00000000044B14A8> 
+<test.Desc object at 0x00000000044B14A8> <test.Test object at 0x00000000044B1470> <class 'test.Test'>
 ```
 
 注意：此处需要睁大眼睛看清楚了，这里调用的是t.x，也就是说是Test类的实例t的属性x，由于实例t中并没有定义属性x，所以找到了类属性x，而该属性是描述符属性，为Desc类的实例而已，所以此处并没有顶用Test的任何方法。
@@ -148,9 +148,9 @@ self in Desc: <__main__.Desc object at 0x000000000283E208>
 下面是把t.x改为Test.x运行的结果。
 
 ```
-self in Test: <__main__.Test object at 0x00000000022570B8>
-self in Desc: <__main__.Desc object at 0x000000000223E208>
-<__main__.Desc object at 0x000000000223E208> None <class '__main__.Test'>
+self in Test: <test.Test object at 0x0000000004421470>
+self in Desc: <test.Desc object at 0x00000000044214A8> 
+<test.Desc object at 0x00000000044214A8> None <class 'test.Test'>
 
 ```
 
