@@ -251,5 +251,15 @@ datetime、date、time都提供了strftime()方法，该方法接收一个格式
     # 今天是今年的第240天    
     # 今周是今年的第34周   
 
-这些就是datetime模块的基本内容，
+这些就是datetime模块的基本内容。
+
+## 日期的加减 timedelta
+对日期和时间进行加减实际上就是把datetime往后或往前计算，得到新的datetime。加减可以直接用+和-运算符，不过需要导入timedelta这个类：
+    
+    from datetime import datetime, timedelta
+    now = datetime.now()
+    year = timedelta(weeks=40, days=84, hours=23,minutes=50, seconds=600)   # adds up to 365 days
+    now + year #得到结果
+
+
 
