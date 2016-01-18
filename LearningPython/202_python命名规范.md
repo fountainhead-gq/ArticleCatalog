@@ -13,6 +13,8 @@ example：GLOBAL_VAR
 命名格式：首字母大写式驼峰
 example：ClassName()
 
+图例：
+![](http://7xq50z.com5.z0.glb.clouddn.com/python-norm.png)
 
 ## 下划线变量的区分
 
