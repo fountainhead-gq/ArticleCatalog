@@ -29,7 +29,7 @@ def analyze(results):
 		plt.xticks(range(len(results)), results.keys())
 		plt.show()
 	else:
-		print("[.] Uh?")
+		print("ah?")
 		quit()
 
 
