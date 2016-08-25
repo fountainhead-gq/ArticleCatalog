@@ -31,8 +31,7 @@ print(op.gt(1, 2))  # False
 functools 包含很多跟函数相关的工具，比如`reduce`、`wraps`、`partial` 等
 
 - `wraps`用来消除装饰器添加后导致函数名和函数doc改变的副作用  
-- `partial` 通过包装"重新定义" 函数,作用就是把函数参数传入到`func`中后，生成一个新的函数
--
+- `partial` 通过包装重新定义函数,作用就是把函数参数传入到`func`中后，生成一个新的函数
 
 ```python
 # -*- coding: utf-8 -*-
