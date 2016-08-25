@@ -26,21 +26,21 @@ date类表示一个日期。date类的构造函数如下：
     class datetime.date(year, month, day)：参数的意义就不多作解释了，只是有几点要注意一下：
 
     - year的范围是[MINYEAR, MAXYEAR]，即[1, 9999]；
-    - month的范围是[1, 12]。（月份是从1开始的，不是从0开始的~_~）；
+    - month的范围是[1, 12]。（月份是从1开始的，不是从0开始的）；
     - day的最大值根据给定的year, month参数来决定。例如闰年2月份有29天；
 
 **使用例子：**
 
     from datetime import *      
     import time             
-    
+
     print ('date.min:', date.min)      
     print ('date.today():', date.today())      
     print ('date.fromtimestamp():', date.fromtimestamp(time.time()))             
     # # ---- 结果 ----         
     # date.min: 0001-01-01      
     # date.today(): 2015-08-06      
-    # date.fromtimestamp(): 2015-08-06 
+    # date.fromtimestamp(): 2015-08-06
 
 ###date提供的实例方法和属性：
 
@@ -64,7 +64,7 @@ date类表示一个日期。date类的构造函数如下：
     print ('isoweekday():', now.isoweekday())  
     print ('isocalendar():', now.isocalendar())  
     print ('isoformat():', now.isoformat())  
-      
+
     # # ---- 结果 ----  
     # now: 2010-04-06 , tomorrow: 2010-04-07  
     # timetuple(): (2010, 4, 6, 0, 0, 0, 1, 96, -1)  
@@ -91,7 +91,7 @@ date还对某些操作进行了重载，它允许我们对日期进行如下一�
     print ('timedelta:', delta)  
     print (now + delta)  
     print (tomorrow > now)  
-      
+
     # # ---- 结果 ----  
     # now: 2015-08-28  tomorrow: 2015-08-07  
     # timedelta: -21 day, 0:00:00  
@@ -126,7 +126,7 @@ class datetime.time(hour[, minute[, second[, microsecond[, tzinfo]]]]) ：各参
     tm1 = tm.replace(hour = 20)  
     print ('tm1:', tm1)  
     print ('isoformat():', tm.isoformat())
-      
+
     # # ---- 结果 ----  
     # tm: 23:46:10  
     # hour: 23, minute: 46, second: 10, microsecond: 0  
@@ -155,7 +155,7 @@ datetime类定义的类属性与方法：
 
     from datetime import *  
     import time  
-      
+
     print ('datetime.max:', datetime.max)   
     print ('datetime.min:', datetime.min)   
     print ('datetime.resolution:', datetime.resolution)
@@ -164,7 +164,7 @@ datetime类定义的类属性与方法：
     print ('utcnow():', datetime.utcnow())  
     print ('fromtimestamp(tmstmp):', datetime.fromtimestamp(time.time()))  
     print ('utcfromtimestamp(tmstmp):', datetime.utcfromtimestamp(time.time()))  
-      
+
     # ---- 结果 ----  
     # datetime.max: 9999-12-31 23:59:59.999999  
     # datetime.min: 0001-01-01 00:00:00  
@@ -236,7 +236,7 @@ datetime、date、time都提供了strftime()方法，该方法接收一个格式
     print ('今天是这周的第%s天 ' % dt.strftime('%w'))  
     print ('今天是今年的第%s天 ' % dt.strftime('%j'))  
     print ('今周是今年的第%s周 ' % dt.strftime('%U'))  
-      
+
     # # ---- 结果 ----  
     # (%Y-%m-%d %H:%M:%S %f):  2015-08-28 09:51:17 979611  
     # (%Y-%m-%d %H:%M:%S %p):  15-08-28 09:51:17 AM  
@@ -255,11 +255,31 @@ datetime、date、time都提供了strftime()方法，该方法接收一个格式
 
 ## 日期的加减 timedelta
 对日期和时间进行加减实际上就是把datetime往后或往前计算，得到新的datetime。加减可以直接用+和-运算符，不过需要导入timedelta这个类：
-    
+
     from datetime import datetime, timedelta
     now = datetime.now()
     year = timedelta(weeks=40, days=84, hours=23,minutes=50, seconds=600)   # adds up to 365 days
     now + year #得到结果
 
 
+datetime 格式字符表
 
+|字符	|含义
+|---  |----
+|%a	|星期英文缩写
+|%A	|星期英文
+|%w	|一星期的第几天，[0(sun),6]
+|%b	|月份英文缩写
+|%B	|月份英文
+|%d	|日期，[01,31]
+|%H	|小时，[00,23]
+|%I	|小时，[01,12]
+|%j	|一年的第几天，[001,366]
+|%m	|月份，[01,12]
+|%M	|分钟，[00,59]
+|%p	|AM 和 PM
+|%S	|秒钟，[00,61] （大概是有闰秒的存在）
+|%U	|一年中的第几个星期，星期日为第一天，[00,53]
+|%W	|一年中的第几个星期，星期一为第一天，[00,53]
+|%y	|没有世纪的年份
+|%Y	|完整的年份
