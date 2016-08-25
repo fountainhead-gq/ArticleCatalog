@@ -12,6 +12,9 @@ os 模块提供了一个统一的操作系统接口函数, 这些接口函数通
 - os.rename(file,back)：给文件重命名；
 - os.system()：运行shell命令；
 - os.linesep：字符串给出当前平台使用的终止符，例如：Windows使用’\r\n’，Linux使用’\n’；
+- os.chdir(path)：将当前工作目录改变为指定的路径
+- os.curdir：表示当前目录的符号
+
 
 ## os.path模块
 
@@ -28,4 +31,3 @@ os 模块提供了一个统一的操作系统接口函数, 这些接口函数通
 - os.path.join(path,name)：连接目录与文件名或目录
 - os.path.basename(path)：返回文件名；
 - os.path.dirname(path)：返回文件路径；
-
