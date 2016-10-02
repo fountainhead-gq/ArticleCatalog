@@ -27,7 +27,7 @@
 - [zip&enumerate](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/LearningPython/101_zip%E3%80%81enumerate.md)
 - [为何无zip函数](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E4%B8%BA%E4%BB%80%E4%B9%88Python%E6%B2%A1%E6%9C%89unzip%E5%87%BD%E6%95%B0.md)
 
-**__int__ & __new__**
+**`__int__` & ` __new__`**
 - [__init__与__new__的区别](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/LearningPython/105___new__%E5%92%8C__init__%E7%9A%84%E5%8C%BA%E5%88%AB.md)
 
 **datetime**
@@ -75,7 +75,7 @@
 - [代码优化](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E4%BB%A3%E7%A0%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7.md)
 - [开发注意事项](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E5%BC%80%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md)
 - [编码风格](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC.md)
-- [易出错的细节](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/Python%E6%98%93%E5%87%BA%E9%94%99%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82.md) 
+- [易出错的细节](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/Python%E6%98%93%E5%87%BA%E9%94%99%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82.md)   
 **进阶**
 - [编程技巧](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E9%AB%98%E6%95%88%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7.md)
 - [高级编程技巧](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7NEW.md)
