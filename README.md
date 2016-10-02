@@ -76,6 +76,8 @@
 - [开发注意事项](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E5%BC%80%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md)
 - [编码风格](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC.md)
 - [易出错的细节](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/Python%E6%98%93%E5%87%BA%E9%94%99%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82.md)   
+
 **进阶**
 - [编程技巧](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E9%AB%98%E6%95%88%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7.md)
 - [高级编程技巧](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7NEW.md)
+- [python高级进阶](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/python%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6%E8%B5%84%E6%96%99.md)
