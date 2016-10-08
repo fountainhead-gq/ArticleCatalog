@@ -81,3 +81,4 @@
 - [编程技巧](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E9%AB%98%E6%95%88%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7.md)
 - [高级编程技巧](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7NEW.md)
 - [python高级进阶](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/python%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6%E8%B5%84%E6%96%99.md)
+- [python最佳实践指南](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/python%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97.md)
