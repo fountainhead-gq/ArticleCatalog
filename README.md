@@ -82,3 +82,11 @@
 - [高级编程技巧](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7NEW.md)
 - [python高级进阶](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/python%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6%E8%B5%84%E6%96%99.md)
 - [python最佳实践指南](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/python%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97.md)
+- [python 函数式编程](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/python_functional_programming.md)
+
+**应用**
+- [VideosAboutPython](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/VideosAboutPython.md)
+- [Python命令行工具](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/Python%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7.md)
+- [Python打包发布自己的库](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/Python%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BA%93.md)
+- [Python多线程](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/Python%E5%A4%9A%E7%BA%BF%E7%A8%8B.md)
+- [Python UnitTest](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/PythonSkill/Python%20UnitTest.md)
