@@ -18,9 +18,6 @@
 
 ## Python UnitTest
 
-[如何测试Python应用](http://py.windrunner.info/great-code/testing.html)
-
-[如何测试Django应用](http://py.windrunner.info/great-code/django-testing.html)
 
 ### Intro
 
