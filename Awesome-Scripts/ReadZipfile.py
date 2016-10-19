@@ -13,3 +13,4 @@ for filename in z.namelist():
         print('名称', filename)
         bytes = z.read(filename)
         print('大小', len(bytes))
+        print('内容', bytes)
