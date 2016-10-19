@@ -53,18 +53,7 @@ utf-8 编码的中文字符一个就占了3个字节.然后 `map(constLenBin,byt
 
 `binaryToString()` 函数将提取出来的二进制字符串转换为隐藏的文本.要弄明白，必须要先搞懂 UTF-8 编码的方式，可以在 wikipedia 上了解  [UTF-8](https://zh.wikipedia.org/wiki/UTF-8)
 
-UTF-8 是 UNICODE的一种变长的编码表达方式，也就是说一个字符串中，不同的字符所占的字节数不一定相同，这就给我们的工作带来了一点复杂度。
-
-|码点的位数	|码点起值	|码点终值	|字节序列	|Byte 1	|Byte 2	|Byte 3	|Byte 4	|Byte 5	|Byte 6
-|--- |--- |--- |--- |--- |--- |--- |--- |--- |---
-|7	|U+0000	|U+007F	|1	|0xxxxxxx	|	|	| |	| |
-|11	|U+0080	|U+07FF	|2	|110xxxxx	|10xxxxxx | | | | | 				
-|16	|U+0800	|U+FFFF	|3	|1110xxxx	|10xxxxxx	|10xxxxxx | | | |			
-|21	|U+10000 |U+1FFFFF	|4	|11110xxx	|10xxxxxx	|10xxxxxx	|10xxxxxx | | |		
-|26	|U+200000	|U+3FFFFFF	|5	|111110xx	|10xxxxxx	|10xxxxxx	|10xxxxxx	|10xxxxxx | |
-|31	|U+4000000	|U+7FFFFFFF	|6	|1111110x	|10xxxxxx	|10xxxxxx	|10xxxxxx	|10xxxxxx	|10xxxxxx
-
-只有 `x `所在的位置（也即是字节中第一个 0 之后的数据）存储的是真正的字符数据，因此我们使用下面两个匿名函数来提取出这些数据：
+UTF-8 是 UNICODE的一种变长的编码表达方式，也就是说一个字符串中，不同的字符所占的字节数不一定相同，这就给我们的工作带来了一点复杂度。因此我们使用下面两个匿名函数来提取出这些数据：
 ```
 rec = lambda x, i: x[2:8] + (rec(x[8:], i-1) if i > 1 else '') if x else ''
 fun = lambda x, i: x[i+1:8] + rec(x[8:], i-1)
@@ -83,6 +72,47 @@ fun = lambda x, i: x[i+1:8] + rec(x[8:], i-1)
 - `int()`: 接受两个参数，第一个参数为数字字符串，第二个参数为这个数字字符串代表的数字的进制。
 - `chr()`：接受一个参数，参数为 int 值，返回 Unicode 码点为这个 int 值的字符。
 
+函数使用参考：  
+[Image.getdata()](https://pillow.readthedocs.io/en/3.3.x/reference/Image.html#PIL.Image.Image.getdata)  
+[PIL.Image.new(mode, size, color=0)](https://pillow.readthedocs.io/en/3.3.x/reference/Image.html#PIL.Image.new)  
+[Image.putdata(data, scale=1.0, offset=0.0)](https://pillow.readthedocs.io/en/3.3.x/reference/Image.html#PIL.Image.Image.putdata)
+
+
+
 
 ### 参见代码
 [完整代码](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/Awesome-Scripts/steganography.py)
+
+
+### 附录: UTF-8
+
+`UTF-8（8-bit Unicode Transformation Format）`是一种针对Unicode的可变长度字符编码，也是一种前缀码。它可以用来表示Unicode标准中的任何字符，且其编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部分修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或发送文字的应用中，优先采用的编码。  
+UTF-8使用一至六个字节为每个字符编码（尽管如此，2003年11月UTF-8被RFC 3629重新规范，只能使用原来Unicode定义的区域，U+0000到U+10FFFF，也就是说最多四个字节）：
+1. 128个US-ASCII字符只需一个字节编码（Unicode范围由U+0000至U+007F）。
+2. 带有附加符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及它拿字母则需要两个字节编码（Unicode范围由U+0080至U+07FF）。
+3. 其他基本多文种平面（BMP）中的字符（这包含了大部分常用字，如大部分的汉字）使用三个字节编码（Unicode范围由U+0800至U+FFFF）。
+4. 其他极少使用的Unicode 辅助平面的字符使用四至六字节编码（Unicode范围由U+10000至U+1FFFFF使用四字节，Unicode范围由U+200000至U+3FFFFFF使用五字节，Unicode范围由U+4000000至U+7FFFFFFF使用六字节）。
+
+#### UTF-8编码字节含义
+- 对于UTF-8编码中的任意字节B，如果B的第一位为0，则B独立的表示一个字符(ASCII码)；
+- 如果B的第一位为1，第二位为0，则B为一个多字节字符中的一个字节(非ASCII字符)；
+- 如果B的前两位为1，第三位为0，则B为两个字节表示的字符中的第一个字节；
+- 如果B的前三位为1，第四位为0，则B为三个字节表示的字符中的第一个字节；
+- 如果B的前四位为1，第五位为0，则B为四个字节表示的字符中的第一个字节；  
+因此，对UTF-8编码中的任意字节，根据第一位，可判断是否为ASCII字符；根据前二位，可判断该字节是否为一个字符编码的第一个字节；根据前四位（如果前两位均为1），可确定该字节为字符编码的第一个字节，并且可判断对应的字符由几个字节表示；根据前五位（如果前四位为1），可判断编码是否有错误或数据传输过程中是否有错误。
+
+
+**Unicode 和 UTF-8 之间的转换关系表** ( x 字符表示码点占据的位 )
+
+|码点的位数	|码点起值	|码点终值	|字节数	|Byte 1	|Byte 2	|Byte 3	|Byte 4	|Byte 5	|Byte 6
+|--- |--- |--- |--- |--- |--- |--- |--- |--- |---
+|7	|U+0000	|U+007F	|1	|0xxxxxxx	|	|	| |	| |
+|11	|U+0080	|U+07FF	|2	|110xxxxx	|10xxxxxx | | | | | 				
+|16	|U+0800	|U+FFFF	|3	|1110xxxx	|10xxxxxx	|10xxxxxx | | | |			
+|21	|U+10000 |U+1FFFFF	|4	|11110xxx	|10xxxxxx	|10xxxxxx	|10xxxxxx | | |		
+|26	|U+200000	|U+3FFFFFF	|5	|111110xx	|10xxxxxx	|10xxxxxx	|10xxxxxx	|10xxxxxx | |
+|31	|U+4000000	|U+7FFFFFFF	|6	|1111110x	|10xxxxxx	|10xxxxxx	|10xxxxxx	|10xxxxxx	|10xxxxxx
+
+- 只有 `x `所在的位置（也即是字节中第一个 0 之后的数据）存储的是真正的字符数据.
+- 在ASCII码的范围，用一个字节表示，超出ASCII码的范围就用字节表示，这就形成了我们上面看到的UTF-8的表示方法，这様的好处是当UNICODE文件中只有ASCII码时，存储的文件都为一个字节，所以就是普通的ASCII文件无异，读取的时候也是如此，所以能与以前的ASCII文件兼容。
+- 大于ASCII码的，就会由上面的第一字节的前几位表示该unicode字符的长度，比如110xxxxx前三位的二进制表示告诉我们这是个2BYTE的UNICODE字符；1110xxxx是个三位的UNICODE字符，依此类推；xxx的位置由字符编码数的二进制表示的位填入。越靠右的x具有越少的特殊意义。只用最短的那个足够表达一个字符编码数的多字节串。注意在多字节串中，第一个字节的开头"1"的数目就是整个串中字节的数目。
