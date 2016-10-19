@@ -16,7 +16,7 @@ def makeImageEven(image):
     return evenImage
 
 
-# 内置函数 bin() 的替代，返回固定长度的二进制字符串
+# 内置函数 bin() 返回固定长度的二进制字符串,Convert an integer number to a binary string.
 def constLenBin(int):
     # 去掉 bin() 返回的二进制字符串中的 '0b'，并在左边补足 '0' 直到字符串长度为 8
     binary = "0"*(8-(len(bin(int))-2))+bin(int).replace('0b', '')
