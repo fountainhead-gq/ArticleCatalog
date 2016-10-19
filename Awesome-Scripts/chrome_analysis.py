@@ -35,7 +35,7 @@ def analyze(results):
 
 # Chrome历史数据存储路径
 data_path = os.path.expanduser('~') + r"\AppData\Local\Google\Chrome\User Data\Default"
-history_db = os.path.join(data_path, 'history')
+history_db = os.path.join(data_path, 'History')
 
 # 打开一个到 SQLite 数据库文件 database 的链接，【当一个数据库被多个连接访问，且其中一个修改了数据库，此时 SQLite 数据库被锁定，直到事务提交。】
 c = sqlite3.connect(history_db)
