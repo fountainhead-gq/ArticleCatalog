@@ -205,6 +205,13 @@ weibo=# \du
  test     |                                            | {}
 ```
 
+#### 导出数据
+
+导出数据到指定的路径  
+```sql
+weibo=# \copy user_info_table_name to C:\Users\Downloads\user_info.csv
+COPY 100
+```
 
 ####  列出当前数据库和连接的信息
 ```sql
