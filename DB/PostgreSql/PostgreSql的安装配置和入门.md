@@ -2,7 +2,8 @@
 
 
 #### 修改端口绑定
-默认情况下postgres像mysql一样只绑定本地127.0.0.1回环接口上的端口，这样使用网卡的正确IP却无法连接，编辑`D:\Program Files (x86)\PostgreSql\data\postgresql.conf`, 找到listen-addresses, 把前面"#"号去掉，并改为`listen-addresses = '*'`即绑定所有接口。
+默认情况下postgres像mysql一样只绑定本地127.0.0.1回环接口上的端口，这样使用网卡的正确IP却无法连接，编辑`D:\Program Files (x86)\PostgreSql\data\postgresql.conf`, 找到listen-addresses, 把前面"#"号去掉，并改为`listen-addresses = '*'`即绑定所有接口。  
+`postgresql.conf` 定义了数据库服务器的参数，包括数据库文件的目录和其他其他配置文件的路径，以及服务器监听的IP地址和端口。
 
 #### 修改IP连接限制
 上述修改完成后使用外网机器pgadmin3可能依然无法连接，这时需要修改`D:\Program Files (x86)\PostgreSql\data\pg_hba.conf`文件来配置允许哪些IP可以访问，如下所示：
@@ -16,6 +17,8 @@ host    all         all         0.0.0.0/0          md5
 # IPv6 local connections:
 host    all         all         ::1/128               md5
 ```
+`pg_hba.conf` 定义了数据库客户端的访问规则（控制），它可以精确指定“谁”可以通过“什么方式”访问“什么数据库”。
+
 
 #### 设置环境变量：
 ```sql
@@ -100,6 +103,8 @@ postgres=# \l
 (4 行记录)
 
 ```
+初始状态只有3个数据库：`template0`，`template1`和`postgres`。`template0`和`template1`是模版数据库，以后创建的数据库都以这些模版为基础。
+
 
 #### 连接指定数据库
 ```sql
@@ -109,6 +114,7 @@ postgres-# \c weibo
 
 #### 列出当前数据库的所有表格
 ```sql
+# \dt 或 \d
 weibo-# \d
                      关联列表
  架构模式 |         名称         |  类型  | 拥有者
@@ -124,6 +130,26 @@ weibo-# \d
  public   | user_info_table_name | 数据表 | test
 (9 行记录)
 ```
+
+### 列出所有表的更多信息
+```sql
+# \dt+ 或 \d+
+weibo=# \d+
+                             关联列表
+ 架构模式 |         名称         |  类型  | 拥有者 |  大小  | 描述
+----------+----------------------+--------+--------+--------+------
+ public   | comment_table_name   | 数据表 | test   | 72 kB  |
+ public   | fan_table_name       | 数据表 | test   | 16 kB  |
+ public   | follow_table_name    | 数据表 | test   | 16 kB  |
+ public   | forward_table_name   | 数据表 | test   | 104 kB |
+ public   | image_table_name     | 数据表 | test   | 16 kB  |
+ public   | post_info_table_name | 数据表 | test   | 16 kB  |
+ public   | text_table_name      | 数据表 | test   | 56 kB  |
+ public   | thumbup_table_name   | 数据表 | test   | 112 kB |
+ public   | user_info_table_name | 数据表 | test   | 16 kB  |
+(9 行记录)
+```
+`\`开头的命令都有`+`这个选项，比如列出数据库命令`\l` 等
 
 #### 列出某一张表格的结构
 ```sql
@@ -157,6 +183,18 @@ SELECT [ ALL | DISTINCT [ ON ( 表达式 [, ...] ) ] ]
     [ FOR { UPDATE | NO KEY UPDATE | SHARE | KEY SHARE } [ OF 表名 [, ...] ] [ NOWAIT | SKIP LOCKED ] [...] ]
 .....
 ```
+### 添加一个超级用户
+```sql
+create role username login superuser password 'password';
+```    
+如果要添加一个普通用户，去掉上面的superuser。
+
+### 删除一个用户
+```sql
+drop role username;
+```
+PostgreSQL（从9.0或者更早）的用户和用户角色都是role，所以创建、删除、更改用户就是create/drop/alter role命令。  
+*注意: 在以上命令中以`\`开头的命令都是非sql命令，不需要以`;`结尾，其它的都是sql命令，需要以`;`结尾，否则不能执行。*
 
 #### 查看命令列表
 ```sql
