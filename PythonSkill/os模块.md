@@ -14,6 +14,7 @@ os 模块提供了一个统一的操作系统接口函数, 这些接口函数通
 - os.linesep：字符串给出当前平台使用的终止符，例如：Windows使用’\r\n’，Linux使用’\n’；
 - os.chdir(path)：将当前工作目录改变为指定的路径
 - os.curdir：表示当前目录的符号
+- os.walk(): 实现遍历文件夹和文件，返回一个三元组(dirpath, dirnames, filenames)。其中dirnames是所有文件夹名字(不包含路径),filenames是所有文件的名字
 
 
 ## os.path模块
