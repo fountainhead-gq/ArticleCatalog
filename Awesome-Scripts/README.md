@@ -15,5 +15,9 @@
 
 [实现图片的隐写术](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/Awesome-Scripts/steganography.py)
 
-
 [Markdown转成html](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/Awesome-Scripts/MarkdownToHtml.py)
+
+[socket实现简易的聊天client](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/Awesome-Scripts/socket_client.ipynb)   
+
+[socket实现简易的聊天service](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/Awesome-Scripts/socket_service.ipynb)   
+ 
