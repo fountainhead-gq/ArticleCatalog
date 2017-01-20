@@ -21,3 +21,6 @@
 
 [socket实现简易的聊天service](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/Awesome-Scripts/socket_service.ipynb)   
  
+[socket实现并发聊天client](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/Awesome-Scripts/socket_client(concurrent).ipynb)   
+
+[socket实现并发聊天service](https://github.com/fountainhead-gq/ArticleCatalog/blob/master/Awesome-Scripts/socket_service(concurrent).ipynb)    
