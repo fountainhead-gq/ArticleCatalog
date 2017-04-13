@@ -1,0 +1,11 @@
+Oracle PL/SQL error：ORA-22285: non-existent directory or file for FILEOPEN operation
+
+
+
+该报错显示是目录不存在。
+SELECT * FROM DBA_OBJECTS WHERE OBJECT_NAME='PSEMPHOTO' AND OBJECT_TYPE='DIRECTORY'
+
+SELECT OWNER, DIRECTORY_NAME, DIRECTORY_PATH FROM ALL_DIRECTORIES;
+查看发现目录是否存在，如果存在引起该错误的原因是对象名大小写敏感，设置大写。
+还要查看目录的权限是否是可读写。
+设置权限：GRANT READ, WRITE ON DIRECTORY DMP_SU TO PUBLIC;
