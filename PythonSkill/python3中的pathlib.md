@@ -1,4 +1,4 @@
-## Mpython3中的pathlib
+## python3中的pathlib
 
 pathlib比os.path更简单更好用。简单示例：
 
@@ -39,5 +39,4 @@ with config_file.open("r") as f:
 # 读取文件，更简单的方法
 txt_read = config_file.read_text()
 print(txt_read)
-
 ```
